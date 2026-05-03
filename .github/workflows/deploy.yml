@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: publish-docker-hub
     steps:
-      - name: Deploy to Server via SSH
+      - name: Deploy to Server
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST }}
@@ -37,6 +37,6 @@ jobs:
           port: 22
           script: |
             docker pull ${{ secrets.DOCKER_USERNAME }}/express-app:latest
-            docker stop express-app || true
-            docker rm express-app || true
-            docker run -d --name express-app -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/express-app:latest
+            docker stop my-app || true
+            docker rm my-app || true
+            docker run -d --name my-app -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/express-app:latest
