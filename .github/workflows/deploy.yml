@@ -24,6 +24,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/express-app:latest
 
+
   deploy:
     runs-on: ubuntu-latest
     needs: publish-docker-hub
