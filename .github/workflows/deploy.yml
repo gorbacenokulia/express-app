@@ -36,7 +36,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            docker pull ${{ secrets.DOCKER_USERNAME }}/express-app:latest
-            docker stop express-app || true
-            docker rm express-app || true
-            docker run -d --name express-app -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/express-app:latest
+            # Переходим в режим суперпользователя и обновляем контейнер
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/express-app:latest
+            sudo docker stop express-app || true
+            sudo docker rm express-app || true
+            sudo docker run -d --name express-app -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/express-app:latest
