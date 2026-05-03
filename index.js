@@ -1,11 +1,11 @@
 const express = require('express');
 const app = express();
-const PORT = 8080;
+const port = 3000;
 
 app.get('/', (req, res) => {
-  res.send('<h1>Test2 - Приложение работает!</h1>');
+  res.send('Hello World! CI/CD is working perfectly!');
 });
 
-app.listen(PORT, () => {
-  console.log(`Сервер запущен на порту ${PORT}`);
+app.listen(port, () => {
+  console.log(`App listening at http://localhost:${port}`);
 });

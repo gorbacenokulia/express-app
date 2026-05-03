@@ -1,12 +1,19 @@
-FROM node:18
+FROM node:20
 
-WORKDIR /app
+# Создаем директорию приложения
+WORKDIR /usr/src/app
 
+# Копируем файлы зависимостей
 COPY package*.json ./
+
+# Устанавливаем зависимости
 RUN npm install
 
+# Копируем исходный код
 COPY . .
 
-EXPOSE 8080
+# Открываем порт
+EXPOSE 3000
 
-CMD ["npm", "start"]
+# Запускаем приложение
+CMD [ "node", "index.js" ]
